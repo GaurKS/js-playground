@@ -3,18 +3,20 @@
 
 const inputString = [{ col1: 'a', col2: 'b' }]
 
-const convertToCSV = (input, delimiter) => {
+const convertToString = (input, delimiter) => {
   let result = [];
   let titles = Object.keys(input[0]);
-  result.push(titles.join(delimiter));
+  console.log("titles: ", titles);
 
+  result.push(titles.join(delimiter));
+  console.log("result: ", result);
   for (let i = 0; i < input.length; i++) {
     let values = Object.values(input[i]);
     result.push(values.join(delimiter));
   }
-
+  console.log("result: ", result);
   return result.join('\n');
 }
 
-console.log(convertToCSV(inputString, ','));
+console.log(convertToString(inputString, ','));
 
