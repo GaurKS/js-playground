@@ -7,10 +7,9 @@ const editObject = (current, diff) => {
   const newKeys = Object.keys(diff);
   console.log('newKeys: ', newKeys);
   for (currKey in current) {
-
     if (newKeys.find((str) => str === currKey)) {
       current[diff[currKey]] = current[currKey];
-
+      delete current[currKey];
     }
     // console.log("this keys: ", currKeys);
   }
