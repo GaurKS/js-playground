@@ -2,7 +2,6 @@
 
 const input = '0';
 
-// using switch case
 const convertTime = (input) => {
   let hour = parseInt(input);
   let result = '';
