@@ -1,7 +1,8 @@
 // Write a program to combine the numbers of a given array into an array 
 // containing all combinations. (reduce)
 
-const input = [1, 2, 3];
+// doubt
+const input = [1, 2];
 
 const combine = (input) => {
   let result = [[]];
