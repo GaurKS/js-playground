@@ -1,6 +1,6 @@
 
 let day = '';
-console.log((new Date().getDay()));
+// console.log((new Date().getDay()));
 
 switch ((new Date().getDay()) % 7) {
   case 0:

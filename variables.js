@@ -10,7 +10,6 @@ function usingVar() {  // mutable variable function scoped
   console.log(x);
 }
 
-
 function usingLet() {  // mutable variable block scoped
   console.log("--usingLet--");
   if (true) {
@@ -25,11 +24,10 @@ function usingConst() { // immutable variable block scoped
   console.log("--usingConst--");
   const z = 30;
   console.log(z); // Output: 30
-
-  z = 40;
 }
 
 
 usingVar();
+console.log("test: ", x);
 usingLet();
-usingConst();
+// usingConst();

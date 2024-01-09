@@ -24,9 +24,7 @@ console.log(ingredientsList[1].list);
 
 
 // filter()
-
 const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
 const res1 = words.filter((word, index, arr) => {
   return arr.indexOf(word) === index;
 })
@@ -35,20 +33,16 @@ console.log(res1);
 
 
 // reduce()
-
 const arr = [1, 2, 3, 4];
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
 console.log(arr.reduce(reducer));
 
 
 const elements = ['Fire', 'Air', 'Water'];
 
 console.log(elements.join());
-// Expected output: "Fire,Air,Water"
+
 
 console.log(elements.join(''));
-// Expected output: "FireAirWater"
 
 console.log(elements.join('-'));
-// Expected output: "Fire-Air-Water"

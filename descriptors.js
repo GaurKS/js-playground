@@ -15,6 +15,31 @@ const object2 = {
   name: "test"
 };
 
-const descriptors1 = Object.getOwnPropertyDescriptors(object1); // returns descriptors of all properties of the object
+const descriptors1 = Object.getOwnPropertyDescriptors(object2); // returns descriptors of all properties of the object
 
 console.log(descriptors1);
+
+
+
+const object3 = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+console.log(Object.getOwnPropertyNames(object3));
+
+
+
+const obj = {};
+const a = Symbol("a");
+const b = Symbol.for("b");
+
+obj[a] = "localSymbol";
+obj[b] = "globalSymbol";
+
+const objectSymbols = Object.getOwnPropertySymbols(obj);
+
+console.log(objectSymbols.length); // 2
+console.log(objectSymbols); // [Symbol(a), Symbol(b)]
+console.log(objectSymbols[0]); // Symbol(a)
