@@ -6,8 +6,8 @@ const obj1 = {
 }
 
 const obj2 = {
+  beard: "true",
   hair: 'long',
-  beard: "true"
 }
 
 const compareObjects = (obj1, obj2) => {
