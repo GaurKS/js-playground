@@ -69,7 +69,6 @@ Promise.race([promise7, promise8]).then((value) => {
 
 // const ALL_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon?limit=50';
 
-// // We have discussed this function already!
 // let promise = getPromise(ALL_POKEMONS_URL);
 
 // const consumer = () => {
