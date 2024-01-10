@@ -8,7 +8,7 @@ const orders = ['asc', 'desc']
 const sort = (input, orderedBy, orders) => {
   let result = input.sort((a, b) => {
     console.log("check", a, " - ", b);
-    for (let i = 0; i < orderedBy.length; i++) {
+    for (i in orderedBy) {
       if (a[orderedBy[i]] < b[orderedBy[i]]) {
         return orders[i] === 'asc' ? -1 : 1;
       }

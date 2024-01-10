@@ -4,7 +4,7 @@ const input = { a: 1, b: 2, c: 3 };
 const keys = ['b'];
 
 const remove = (input, keys) => {
-  for (let i = 0; i < keys.length; i++) {
+  for (i in keys) {
     delete input[keys[i]];
   }
   return input;

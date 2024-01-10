@@ -10,9 +10,8 @@ const convertToString = (input, delimiter) => {
 
   result.push(titles.join(delimiter));
   console.log("result: ", result);
-  for (let i = 0; i < input.length; i++) {
-    let values = Object.values(input[i]);
-    result.push(values.join(delimiter));
+  for (i in input) {
+    result.push(Object.values(input[i]).join(delimiter));
   }
   console.log("result: ", result);
   return result.join('\n');

@@ -3,7 +3,7 @@
 
 const inputString = 'col1,col2\na,b\nc,d'
 
-function convertStringTo2DArray(inputString) {
+const convertStringTo2DArray = (inputString) => {
   let result = [];
   let rows = inputString.split('\n');
   console.log("rows: ", rows);
@@ -13,11 +13,12 @@ function convertStringTo2DArray(inputString) {
   console.log("titles: ", titles);
 
   // loop through the rest of the rows
-  for (let i = 1; i < rows.length; i++) {
+  for (i in rows) {
     let obj = {};
     let values = rows[i].split(',');
+    console.log("values: ", values);
 
-    for (let j = 0; j < titles.length; j++) {
+    for (j in titles) {
       obj[titles[j]] = values[j];
     }
 

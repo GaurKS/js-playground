@@ -6,12 +6,10 @@ const input = [1, 2];
 
 const combine = (input) => {
   let result = [[]];
-  for (let i = 0; i < input.length; i++) {
-    let temp = [];
-    for (let j = 0; j < result.length; j++) {
-      temp.push(result[j].concat(input[i]));
+  for (i in input) {
+    for (j in result) {
+      result.push(result[j].concat(input[i]));
     }
-    result = result.concat(temp);
   }
   return result;
 }
