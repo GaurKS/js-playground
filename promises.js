@@ -10,22 +10,36 @@
 
 // promise methods
 
-// promise.all - waits for all promises to resolve and returns an array of results
-const promise1 = Promise.resolve(3);
-const promise2 = 42;
-const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'foo'));
+// promise.all - waits for all promises to resolve and returns an array of results, 
+// if any of the promises is rejected then the promise.all fails with that error
 
+// const promise1 = Promise.resolve(3);
+// const promise2 = 42;
+// const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'foo'));
 // Promise.all([promise1, promise2, promise3]).then((values) => console.log(values));
 
-// promise.any - waits for any of the promises to resolve and returns the result
+
+// Promise.allSettled - waits for all promises to settle (resolve or reject) and then returns an array with all the results
+
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(reject, 100, 'foo'),
+);
+const promises = [promise1, promise2];
+
+Promise.allSettled(promises).then((results) =>
+  results.forEach((result) => console.log(result.status)),
+);
+
+// promise.any - waits for the first promise to resolve and returns the result of that promise, 
+// if all promises are rejected then the promise.any fails with an aggregate error
 const promise4 = Promise.reject(0);
 const promise5 = new Promise((resolve) => setTimeout(resolve, 100, 'quick'));
 const promise6 = new Promise((resolve) => setTimeout(resolve, 500, 'slow'));
 
 // Promise.any([promise4, promise5, promise6]).then((value) => console.log(value));
 
-// promise.race - waits for the first promise in order to resolve and returns the result
-// doubt in this, gettng uncaught error
+// promise.race - waits for the first promise to fulfil (resolve or reject) and returns the result of that promise
 const promise7 = new Promise((resolve) => {
   setTimeout(resolve, 500, 'one');
 });
