@@ -1,5 +1,3 @@
-// input - [[11,34,42,60,83],[2,23,38,51,76],[17,46,55,79,88]], [11, 2, 17, 23, 34, 38, 42, 46, 51, 55, 60, 76, 79, 83, 88]
-
 // patterns -
 // Early Seven : The ticket with any seven number called out, prize money is 120
 // Laddu Singh: Middle number of middle row is called out, prize money is 100
@@ -12,7 +10,6 @@
 
 // assuming the ticket size is 3x5
 const ticket = [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]];
-// const calls = [11, 2, 17, 23, 34, 38, 42, 46, 51, 55, 60, 76, 79, 83, 88];
 const calls = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 11, 12, 13, 14, 15];
 
 const prizeMoney = {
