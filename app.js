@@ -13,7 +13,7 @@
 // assuming the ticket size is 3x5
 const ticket = [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]];
 // const calls = [11, 2, 17, 23, 34, 38, 42, 46, 51, 55, 60, 76, 79, 83, 88];
-const calls = [141, 112, 113, 115, 111, 122, 123, 121, 125, 119, 69, 76, 79, 83, 18];
+const calls = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 11, 12, 13, 14, 15];
 
 const prizeMoney = {
   earlySeven: 120,
@@ -38,7 +38,7 @@ const checkEarlySeven = (ticket, calls) => {
     }).flat()
   }).flat();
 
-  return earlySeven.length >= count ? calls.indexOf(earlySeven[count - 1]) : false;
+  return earlySeven.length >= count ? calls.indexOf(earlySeven[count - 1]) + 1 : false;
 }
 
 // method to check if the middle number of middle row is called out and if yes, also return the index of the number from calls array
@@ -46,7 +46,7 @@ const checkLadduSingh = (ticket, calls) => {
   const middleRow = ticket[Math.floor(ticket.length / 2)];
   const middleNumber = middleRow[Math.floor(middleRow.length / 2)];
   const middleNumberIndex = calls.indexOf(middleNumber);
-  return middleNumberIndex !== -1 ? middleNumberIndex : false;
+  return middleNumberIndex !== -1 ? middleNumberIndex + 1 : false;
 }
 
 // method to check if the first and last number of first and last row is called out and if yes, 
@@ -64,7 +64,7 @@ const checkFourCorners = (ticket, calls) => {
     })
   }).flat();
 
-  return fourCorners.length >= 4 ? calls.indexOf(fourCorners[3]) : false;
+  return fourCorners.length >= 4 ? calls.indexOf(fourCorners[3]) + 1 : false;
 }
 
 // method to check if the top row is called out and if yes, 
@@ -77,7 +77,7 @@ const checkTopLine = (ticket, calls) => {
     })
   }).flat();
 
-  return topLine.length >= topRow.length ? calls.indexOf(topLine[topRow.length - 1]) : false;
+  return topLine.length >= topRow.length ? calls.indexOf(topLine[topRow.length - 1]) + 1 : false;
 }
 
 // method to check if the middle row is called out and if yes,
@@ -89,7 +89,7 @@ const checkMiddleLine = (ticket, calls) => {
       return number === num;
     })
   }).flat();
-  return middleLine.length >= middleRow.length ? calls.indexOf(middleLine[middleRow.length - 1]) : false;
+  return middleLine.length >= middleRow.length ? calls.indexOf(middleLine[middleRow.length - 1]) + 1 : false;
 }
 
 // method to check if the bottom row is called out and if yes,
@@ -102,7 +102,7 @@ const checkBottomLine = (ticket, calls) => {
     })
   }).flat();
 
-  return bottomLine.length >= bottomRow.length ? calls.indexOf(bottomLine[bottomRow.length - 1]) : false;
+  return bottomLine.length >= bottomRow.length ? calls.indexOf(bottomLine[bottomRow.length - 1]) + 1 : false;
 }
 
 // method to check if the full house is called out and if yes,
@@ -116,7 +116,7 @@ const checkFullHouse = (ticket, calls) => {
     }).flat()
   }).flat();
 
-  return fullHouse.length >= ticket.length * ticket[0].length ? calls.indexOf(fullHouse[ticket.length * ticket[0].length - 1]) : false;
+  return fullHouse.length >= ticket.length * ticket[0].length ? calls.indexOf(fullHouse[ticket.length * ticket[0].length - 1]) + 1 : false;
 }
 
 // method to mark the ticket
@@ -129,8 +129,7 @@ const markTicket = (ticket, calls) => {
   return markedTicket;
 }
 
-// method to check if the pattern is formed and if yes,
-// also return the index of the number from calls array
+// method to check the ticket and patterns formed 
 const checkPattern = (ticket, calls) => {
   const earlySeven = checkEarlySeven(ticket, calls);
   const ladduSingh = checkLadduSingh(ticket, calls);
