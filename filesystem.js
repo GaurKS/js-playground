@@ -5,7 +5,7 @@
 // Delete files
 // Rename files
 
-const { writeFile, appendFile, open, readFile, rename, copyFile } = require('fs/promises');
+const { writeFile, appendFile, open, readFile, rename, copyFile, chmod, unlink, chown, symlink } = require('fs/promises');
 const { join } = require('path');
 
 
@@ -92,9 +92,63 @@ async function copyAFile(from, to) {
   }
 }
 
-
+// copying multiple file content
+// can also use this approach to perform other operations like moving, writing, and reading files in parallel.
 async function copyAll(fromDir, toDir, filePaths) {
   return Promise.all(filePaths.map(filePath => {
     return copyAFile(join(fromDir, filePath), join(toDir, filePath));
   }));
 }
+
+// copyFiles('from', 'to', ['copyA.txt', 'copyB.txt']);
+
+
+// deleting a file
+async function deleteFile(filePath) {
+  try {
+    await unlink(filePath);
+    console.log(`Deleted ${filePath}`);
+  } catch (error) {
+    console.error(`Got an error trying to delete the file: ${error.message}`);
+  }
+}
+
+// deleteFile('delete-me.txt');
+
+// changing file permissions programmitically
+async function changePermission(filePath, permission) {
+  try {
+    await chmod(filePath, permission);
+    console.log(`Changed permission to ${permission} for ${filePath}`);
+  } catch (error) {
+    console.error(`Got an error trying to change permission: ${error.message}`);
+  }
+}
+// it will take filename and bitmask of file permission 
+// changePermission('permission.txt', 0o400);
+
+
+// changing file ownership programmitacally
+async function changeOwnership(filePath, userId, groupId) {
+  try {
+    await chown(filePath, userId, groupId);
+    console.log(`Changed ownership to ${userId}:${groupId} for ${filePath}`);
+  } catch (error) {
+    console.error(`Got an error trying to change ownership: ${error.message}`);
+  }
+}
+
+// it will take filename, userId and groupdId
+// changeOwnership('ownership.txt', 1000, 1010);
+
+// creating symlink
+async function createSymlink(target, path, type) {
+  try {
+    await symlink(target, path, type);
+    console.log(`Created symlink to ${target} at ${path}`);
+  } catch (error) {
+    console.error(`Got an error trying to create the symlink: ${error.message}`);
+  }
+}
+
+createSymlink('join(__dirname, from, symMe.txt)', 'to', 'file');
