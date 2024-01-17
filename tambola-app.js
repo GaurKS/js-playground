@@ -10,7 +10,7 @@
 
 // assuming the ticket size is 3x5
 const ticket = [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]];
-const calls = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 11, 12, 13, 14, 15];
+const calls = [16, 17, 28, 9, 2, 21, 22, 23, 24, 33, 11, 12, 13, 14, 15];
 
 const prizeMoney = {
   earlySeven: 120,
@@ -55,11 +55,7 @@ const checkFourCorners = (ticket, calls) => {
   cornerNumbers.push(ticket[ticket.length - 1][0]);
   cornerNumbers.push(ticket[ticket.length - 1][ticket[ticket.length - 1].length - 1]);
 
-  let fourCorners = calls.map((num) => {
-    return cornerNumbers.filter((number) => {
-      return number === num;
-    })
-  }).flat();
+  let fourCorners = calls.map((num) => cornerNumbers.filter((number) => number === num)).flat();
 
   return fourCorners.length >= 4 ? calls.indexOf(fourCorners[3]) + 1 : false;
 }

@@ -63,7 +63,7 @@ const mapLoop = async _ => {
   console.log('Start')
 
   const promises = fruitsToGet.map(async fruit => {
-    const numFruit = await getNumFruit(fruit)
+    const numFruit = getNumFruit(fruit)
     return numFruit
   })
 
@@ -72,6 +72,8 @@ const mapLoop = async _ => {
 
   console.log('End')
 }
+
+mapLoop();
 
 
 // const filterLoop = async _ => {
@@ -102,4 +104,4 @@ const filterLoop = async _ => {
   console.log('End')
 }
 
-filterLoop();
+// filterLoop();
