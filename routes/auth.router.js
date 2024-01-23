@@ -1,17 +1,15 @@
 const express = require('express');
-const { signup, login } = require('../controllers/auth.controller');
+const { signup, login, resetPasswordToken, resetPassword } = require('../controllers/auth.controller');
 const router = express.Router();
 
 // importing validators
-const { userSignupValidator, userSigninValidator } = require('../validators/auth.validator');
+const { userSignupValidator, userSigninValidator, userResetEmail, userResetPasswordBody } = require('../validators/auth.validator');
 const { runValidation } = require('../validators/index');
 
 // routing endpoints to middlewares
-router.get('/test', (req, res) => {
-  res.send('Hello World!');
-});
 router.post('/register', userSignupValidator, runValidation, signup);
 router.post('/login', userSigninValidator, runValidation, login);
-// router.post('/reset-password', userResetPassword, runValidation, resetPassword);
+router.post('/forget-password', userResetEmail, runValidation, resetPasswordToken);
+router.post('/reset-password', userResetPasswordBody, runValidation, resetPassword);
 
 module.exports = router;

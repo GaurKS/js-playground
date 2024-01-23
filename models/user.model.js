@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongodb');
 
 class User {
   constructor(username, email, password) {

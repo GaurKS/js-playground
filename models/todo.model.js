@@ -1,4 +1,6 @@
-// title, description, status, dueDate, creationDate, orders, tags array
+const config = require('../config/config');
+
+// add collection name to class parameter and export
 class Todo {
   constructor(title, description, status, dueDate, creationDate, priority, tags, owner) {
     this.title = title;
@@ -11,3 +13,9 @@ class Todo {
     this.owner = owner;
   }
 }
+
+Todo.databaseName = config.mongodb_database;
+Todo.collectionName = config.mongodb_todos_collection;
+
+
+module.exports = Todo;
